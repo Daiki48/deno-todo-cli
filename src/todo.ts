@@ -57,12 +57,12 @@ const addTodo = async (todoData: Todo) => {
 
 const completeTodo = async () => {
   const todos = await loadTodo();
-  console.log(todos.contents); // undefined todosは配列自体だから？
-  console.log(args);
-  if (todos.contents === args) {
-    console.log(todos);
-    todos.isCompleted = true;
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].contents === args) {
+      todos[i].isCompleted = true;
+    }
   }
+  saveTodo(todos);
 };
 
 const showTodo = async () => {
