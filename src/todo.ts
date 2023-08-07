@@ -8,26 +8,25 @@ interface Todo {
 }
 
 export const todo = async () => {
-  if (args !== undefined) {
-    const todoData = {
-      contents: args,
-      isCompleted: false,
-    };
-    switch (option) {
-      case "--add":
-        await addTodo(todoData);
-        showTodo();
-        break;
-      case "--complete":
-        await completeTodo();
-        showTodo();
-        break;
-      default:
-        console.log("Please enter an option.");
-        break;
-    }
-  } else {
-    console.log("Not found todo contents");
+  const todoData = {
+    contents: args,
+    isCompleted: false,
+  };
+  switch (option) {
+    case "--add":
+      await addTodo(todoData);
+      showTodo();
+      break;
+    case "--complete":
+      await completeTodo();
+      showTodo();
+      break;
+    case "--list":
+      showTodo();
+      break;
+    default:
+      console.log("Please enter an option.");
+      break;
   }
 };
 
